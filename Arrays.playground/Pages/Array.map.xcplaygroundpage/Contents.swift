@@ -56,7 +56,7 @@ returnWeatherForecast()
         // Step 2: Setup the let variable to map to an array of NSNumbers.
         // Step 3: Pull out the humidity tag and convert to NSNumber to return to the map call.
         // Step 4: fulfill the Humidity array instead of maxTempForecast
-        // Step 5: Change the map to return a string so that your values read: "50 Degrees" or "50°"
+        // Step 5: Change the map to return a string so that your values read: "50%"
         
         // REPLACE WITH YOUR CODE
         
