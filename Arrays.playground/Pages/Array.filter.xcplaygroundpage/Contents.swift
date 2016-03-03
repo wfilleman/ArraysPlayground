@@ -58,7 +58,7 @@ returnWeatherForecast()
         print("All Forecasted Wind Speeds: \(windSpeedForecast)") // Look at the Log for results
         
         // START Exercise: Filter the "windSpeedForecast" to just include forecasted data from today that is greater than "windySpeed"
-        // * Hint on the Date: Look at the NSDate Extensions in SwiftDate for the ".inInToday" extension feature.
+        // * Hint on the Date: Look at the NSDate Extensions in SwiftDate for the ".isInToday" extension feature.
         var windSpeedsFilteredForecast = [(wind:NSNumber, date:NSDate)]()
         
         // REPLACE WITH YOUR CODE
