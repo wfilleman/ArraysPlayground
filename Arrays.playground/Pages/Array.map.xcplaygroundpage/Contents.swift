@@ -58,7 +58,14 @@ returnWeatherForecast()
         // Step 4: fulfill the Humidity array instead of maxTempForecast
         // Step 5: Change the map to return a string so that your values read: "50%"
         
-        // REPLACE WITH YOUR CODE
+        let maxHumidityForecast = weatherJSON["list"].arrayValue.map { listObj -> NSNumber in
+            return listObj["main"]["humidity"].numberValue
+        }
+        print(maxHumidityForecast)
+        let maxHumidityForecastString = weatherJSON["list"].arrayValue.map { listObj -> String in
+            return "\(listObj["main"]["humidity"].numberValue)%"
+        }
+        print(maxHumidityForecastString)
         
         // END Excercise Code
         

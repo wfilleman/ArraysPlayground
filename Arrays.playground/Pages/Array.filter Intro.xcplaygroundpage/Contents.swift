@@ -15,10 +15,8 @@ let girlsOnly = siblings.filter { firstName -> Bool in
 //: * Bobby
 //: * Johnny
 
-// START Exercise
-
-// REPLACE WITH YOUR CODE
-
-// END Exercise code
+let longerNames = siblings.filter { firstName -> Bool in
+    return firstName.characters.count > 4
+}
 
 //: [Next](@next)

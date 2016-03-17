@@ -18,10 +18,8 @@ let totalCharacters = siblings.reduce(0, combine: { (sum, nextElement) -> Int in
 //: Exercise: Create an array using .reduce on "siblings" that returns the length of the smallest name. IE:
 //: * 4
 
-// START Exercise
-
-// REPLACE WITH YOUR CODE
-
-// END Exercise code
+let smallestNameLength = siblings.reduce(siblings.first!.characters.count, combine: { (smallestLength, nextName) -> Int in
+    return nextName.characters.count < smallestLength ? nextName.characters.count : smallestLength
+})
 
 //: [Next](@next)

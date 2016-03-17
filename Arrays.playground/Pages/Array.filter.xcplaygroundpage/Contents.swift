@@ -37,7 +37,7 @@ func returnWeatherForecast() -> Promise<JSON> {
 //: ## Entry Point
 
 // The speed in Miles per Hour considered windy
-let windySpeed = 10.0
+let windySpeed = 5.0
 
 returnWeatherForecast()
     .then { weatherJSON -> Void in
@@ -61,7 +61,9 @@ returnWeatherForecast()
         // * Hint on the Date: Look at the NSDate Extensions in SwiftDate for the ".isInToday" extension feature.
         var windSpeedsFilteredForecast = [(wind:NSNumber, date:NSDate)]()
         
-        // REPLACE WITH YOUR CODE
+        windSpeedsFilteredForecast = windSpeedForecast.filter { includeElement -> Bool in
+            return (includeElement.wind.doubleValue > windySpeed && includeElement.date.isInToday())
+        }
         
         // END Excercise Code
         
@@ -81,9 +83,36 @@ returnWeatherForecast()
         
         
         // START Exercise: Display a label showing all the weather[].descriptions for tomorrow
-
-        // REPLACE WITH YOUR CODE
+        let weatherDescriptions = weatherJSON["list"].arrayValue.map { listObj -> (description:String, date:NSDate) in
+            
+            // Pull out the desciption
+            let description = listObj["weather"][0]["description"].stringValue
+            let dateStamp = listObj["dt"].numberValue
+            let date = NSDate(timeIntervalSince1970: dateStamp.doubleValue)
+            
+            return (description, date)
+        }
         
+        print("All Descriptions: \(weatherDescriptions)") // Look at the Log for results
+        
+        let weatherDescriptionsTomorrow = weatherDescriptions.filter { includeElement -> Bool in
+            return (includeElement.date.isInTomorrow())
+        }
+        
+        print("Filtered Descriptions for Tomorrow: \(weatherDescriptionsTomorrow)") // Look at the Log for results
+        
+        let weatherDescriptionLbl = UILabel(frame: CGRectMake(0,0,300,200))
+        weatherDescriptionLbl.textAlignment = .Center
+        weatherDescriptionLbl.backgroundColor = [#Color(colorLiteralRed: 0, green: 1, blue: 0.1411310552024592, alpha: 1)#]
+        weatherDescriptionLbl.numberOfLines = 10
+        
+        weatherDescriptionLbl.text = "Tomorrow's Forecast:"
+        for item in weatherDescriptionsTomorrow {
+            let combinedDesc = item.date.toString(DateFormat.Custom("h:mm a"))! + " : " + item.description
+            weatherDescriptionLbl.text = "\(weatherDescriptionLbl.text!)\n\(combinedDesc)"
+        }
+
+        weatherDescriptionLbl
         // End Excercise Code
         
     }

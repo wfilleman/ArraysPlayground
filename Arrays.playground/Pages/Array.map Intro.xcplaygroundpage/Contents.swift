@@ -17,10 +17,10 @@ let charsInName = siblings.map { firstName -> Int in
 //: * Mary Jones
 //: * Lisa Jones
 //: * Johnny Jones
-// START Exercise
 
-// REPLACE WITH YOUR CODE
-
-// END Exercise code
+let fullNames = siblings.map { firstName -> String in
+    return firstName + " Jones"
+}
+fullNames
 
 //: [Next](@next)
